@@ -1,4 +1,535 @@
-@media (max-width: 980px) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dharani K | Embedded Systems & AI Developer</title>
+    <meta name="description" content="Portfolio for Dharani K, an Embedded Systems & AI Developer focused on IoT, computer vision, and real-world automation." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #07111f;
+            --bg-alt: #0c1728;
+            --surface: rgba(15, 25, 43, 0.8);
+            --surface-strong: #111d31;
+            --text: #ecf3ff;
+            --muted: #96a8c4;
+            --line: rgba(141, 170, 208, 0.18);
+            --accent: #5eead4;
+            --accent-2: #7c9cff;
+            --accent-3: #f59e0b;
+            --shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+            --radius: 22px;
+            --radius-sm: 16px;
+            --max: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--text);
+            font-family: "Space Grotesk", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(124, 156, 255, 0.18), transparent 28%),
+                radial-gradient(circle at top right, rgba(94, 234, 212, 0.12), transparent 24%),
+                linear-gradient(180deg, #050b14 0%, var(--bg) 42%, #050b14 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.36), transparent 70%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(var(--max), calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(5, 11, 20, 0.72);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .brand-mark {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #04111c;
+            box-shadow: 0 12px 28px rgba(94, 234, 212, 0.22);
+        }
+
+        .nav {
+    display: flex;
+    gap: 14px;
+    flex-wrap: nowrap;      /* stop breaking into 2 lines */
+    overflow-x: auto;       /* allow horizontal scroll */
+    white-space: nowrap;    /* keep items in one line */
+    font-size: 0.85rem;
+    color: var(--muted);
+   }
+
+        .nav a {
+            transition: color 0.2s ease;
+        }
+
+        .nav a:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            padding: 72px 0 34px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.9fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .panel {
+            background: linear-gradient(180deg, rgba(18, 29, 48, 0.92), rgba(10, 17, 30, 0.92));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-main {
+            position: relative;
+            overflow: hidden;
+            padding: 40px;
+            isolation: isolate;
+        }
+
+        .hero-main::after {
+            content: "";
+            position: absolute;
+            inset: auto -80px -100px auto;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(94, 234, 212, 0.16), transparent 68%);
+            z-index: -1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(94, 234, 212, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(94, 234, 212, 0.18);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.82rem;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+        margin: 0;
+        font-size: 2.4rem;   /* medium size */
+        line-height: 1.25;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        max-width: 18ch;
+        }
+
+        .hero h1 span {
+            display: block;
+            background: linear-gradient(135deg, #ffffff 0%, #a9d8ff 35%, #5eead4 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-lead {
+            margin: 18px 0 0;
+            max-width: 62ch;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+            font-weight: 600;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .button.primary {
+            background: linear-gradient(135deg, var(--accent), #8ab4ff);
+            color: #07111f;
+            box-shadow: 0 12px 34px rgba(124, 156, 255, 0.24);
+        }
+
+        .button.secondary {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text);
+        }
+
+        .hero-side {
+            display: grid;
+            gap: 16px;
+        }
+
+        .profile-card {
+            padding: 28px;
+        }
+
+        .profile-card h2,
+        .section-title h2 {
+            margin: 0;
+            font-size: 1.35rem;
+            letter-spacing: -0.03em;
+        }
+
+        .profile-card p {
+            color: var(--muted);
+            line-height: 1.7;
+            margin: 12px 0 0;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .stat {
+            padding: 18px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 0.94rem;
+            line-height: 1.5;
+        }
+
+        .section {
+            padding: 26px 0;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .section-title p {
+            margin: 0;
+            max-width: 58ch;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .about-card,
+        .skills-card,
+        .contact-card {
+            padding: 28px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 18px;
+            align-items: start;
+        }
+
+        .kicker {
+            font-family: "IBM Plex Mono", monospace;
+            color: var(--accent);
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .about-card p,
+        .project-card p,
+        .contact-card p {
+            color: var(--muted);
+            line-height: 1.75;
+            margin: 0;
+        }
+
+        .focus-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .focus-item {
+            padding: 16px 18px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .focus-item strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .focus-item span {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .skill-block {
+            padding: 20px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+        }
+
+        .skill-block:hover,
+        .project-card:hover,
+        .contact-link:hover {
+            transform: translateY(-4px);
+            border-color: rgba(124, 156, 255, 0.26);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-block h3 {
+            margin: 0 0 12px;
+            font-size: 1rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: rgba(124, 156, 255, 0.12);
+            color: #d8e4ff;
+            border: 1px solid rgba(124, 156, 255, 0.18);
+            font-size: 0.92rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .project-card {
+            padding: 26px;
+            border-radius: var(--radius);
+            background: linear-gradient(180deg, rgba(17, 28, 47, 0.95), rgba(11, 18, 31, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .project-top h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            letter-spacing: -0.03em;
+        }
+
+        .project-top .badge {
+            white-space: nowrap;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.76rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .project-meta {
+            display: grid;
+            gap: 12px;
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .meta-row strong {
+            color: var(--text);
+            min-width: 84px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .contact-links {
+            display: grid;
+            gap: 14px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 18px 20px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+        }
+
+        .contact-link span {
+            color: var(--muted);
+            font-size: 0.94rem;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .footer {
+            padding: 34px 0 46px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .accent-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.6), rgba(124, 156, 255, 0.7), transparent);
+            margin-top: 20px;
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-main,
+        .hero-side > *,
+        .section .panel {
+            animation: floatIn 0.7s ease both;
+        }
+
+        .hero-side > *:nth-child(2) {
+            animation-delay: 0.08s;
+        }
+
+        .section:nth-of-type(2) .panel {
+            animation-delay: 0.05s;
+        }
+
+        .section:nth-of-type(3) .panel {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-of-type(4) .panel {
+            animation-delay: 0.14s;
+        }
+
+        .section:nth-of-type(5) .panel {
+            animation-delay: 0.18s;
+        }
+
+      @media (max-width: 980px) {
     .hero-grid,
     .about-grid,
     .contact-grid,
@@ -69,3 +600,461 @@
         align-items: flex-start;
     }
 }
+            .topbar-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding-top: 48px;
+            }
+
+            .hero-main,
+            .about-card,
+            .skills-card,
+            .contact-card,
+            .project-card {
+                padding: 22px;
+            }
+
+            .hero h1 {
+             font-size: 1.9rem;
+              line-height: 1.3;
+        }
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-top,
+            .contact-link {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        .project-img {
+    width: 60%;
+    max-width: 500px;
+    border-radius: 10px;
+    margin: 12px 0;
+    display: block;
+}
+.cert-img {
+    width: 120px;        /* reduce size */
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 10px;
+}
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <div class="brand">
+                <div class="brand-mark">DK</div>
+                <div>
+                    Dharani K
+                    <div style="color: var(--muted); font-size: 0.88rem; font-weight: 400;">Embedded Systems & AI Developer</div>
+                </div>
+            </div>
+            <nav class="nav" aria-label="Primary navigation">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#internship & Training">Internship</a>
+                <a href="#skills">Skills</a>
+                 <a href="#projects">Projects</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+     
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                
+                <div class="panel hero-main">
+                   <h1>
+    <span>Focused on</span> embedded systems, IoT, and AI-driven real-time applications.
+</h1>                  <p class="hero-lead">
+                        Electronics and Communication Engineering graduate with hands-on experience in Embedded Systems, IoT, and AI applications. Skilled in developing real-time systems that integrate hardware and software for safety, automation, and smart infrastructure solution.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="button primary" href="#projects">View Projects</a>
+                        <a class="button secondary" href="#contact">Get in Touch</a>
+                    </div>
+                    <div class="accent-line"></div>
+                </div>
+
+                
+
+                    <div class="panel profile-card">
+                        <div class="stat-grid">
+                            <div class="stat">
+                                <strong>IoT + Embedded</strong>
+                                <span>Arduino, ESP32, sensors, relay control, and device integration.</span>
+                            </div>
+                            <div class="stat">
+                                <strong>AI Vision</strong>
+                                <span>YOLO and OpenCV for detection, monitoring, and alert workflows.</span>
+                            </div>
+                            <div class="stat">
+                                <strong>Backend</strong>
+                                <span>FastAPI services with CRUD, auth, and WebSocket updates.</span>
+                            </div>
+                            <div class="stat">
+                                <strong>Languages</strong>
+                                <span>Python, Embedded C, Java</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="container">
+                <div class="section-title">
+                    <div>
+                        <div class="kicker">About</div>
+                        <h2>Focused on systems that are useful outside the lab.</h2>
+                    </div>
+                  
+                </div>
+                
+                
+                <div class="panel about-card">
+                    <div class="about-grid">
+                        <div>
+                            <p>
+                                I enjoy taking ideas from concept to working prototype. My projects bring together sensors,
+                                edge inference, control logic, and backend services to create systems that are practical,
+                                maintainable, and aligned with real user needs.
+                            </p>
+                            <p style="margin-top: 14px;">
+                                My strongest contribution is turning a technical challenge into a clear workflow: detect the
+                                problem, make the response immediate, and design the system so it can be demonstrated and
+                                expanded confidently.
+                            </p>
+                        </div>
+                        
+                        <div class="focus-list">
+                            <div class="focus-item">
+                                <strong>Problem solving</strong>
+                                <span>Builds systems that detect, decide, and respond in real time.</span>
+                            </div>
+                            <div class="focus-item">
+                                <strong>Product thinking</strong>
+                                <span>Balances hardware, software, and user experience for usable prototypes.</span>
+                            </div>
+                            <div class="focus-item">
+                                <strong>Reliability mindset</strong>
+                                <span>Prioritizes clean logic, readable code, and safe hardware behavior.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <section class="section" id="education">
+    <div class="container">
+
+        <div class="section-title">
+            <div>
+                <div class="kicker">Education</div>
+                <h2>Academic Background</h2>
+            </div>
+        </div>
+
+        <div class="panel about-card">
+            <ul style="color: var(--muted); line-height: 1.9; margin: 0; padding-left: 18px;">
+                <li>
+                    <strong style="color: var(--text);">B.E. Electronics and Communication Engineering</strong><br>
+                    Velammal Engineering College (2022–2026) — CGPA: 8.32
+                </li>
+
+                <li style="margin-top: 12px;">
+                    <strong style="color: var(--text);">HSC</strong><br>
+                    Sacred Heart Girls Higher Secondary School, Pudukkottai (2020–2022) — 90.5%
+                </li>
+
+                <li style="margin-top: 12px;">
+                    <strong style="color: var(--text);">SSLC</strong><br>
+                    Government High School, Manthangudi (2019–2020) — 91.8%
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+<section class="section" id="internship">
+    <div class="container">
+
+        <div class="section-title">
+            <div>
+                <div class="kicker">Internship & Training</div>
+                <h2>Industry Exposure</h2>
+            </div>
+        </div>
+
+        <div class="panel about-card">
+
+            <p style="color: var(--text); font-weight: 600; margin-bottom: 6px;">
+                IoT Internship – Scrapify Ecotech Pvt. Ltd.
+            </p>
+            <ul style="color: var(--muted); line-height: 1.8; margin-top: 0;">
+                <li>Attended internship for learning and exposure to IoT and embedded systems concepts.</li>
+                <li>Gained basic knowledge of hardware setup, sensors, and IoT applications through demonstrations and guidance.</li>
+            </ul>
+
+            <div style="height: 14px;"></div>
+
+            <p style="color: var(--text); font-weight: 600; margin-bottom: 6px;">
+                In-Plant Training – Doordarshan (Electro Broadcast)
+            </p>
+            <ul style="color: var(--muted); line-height: 1.8; margin-top: 0;">
+                <li>Gained hands-on exposure to broadcasting systems, signal processing, and studio operations.</li>
+                <li>Learned fundamentals of satellite and terrestrial communication systems used in broadcasting.</li>
+            </ul>
+
+        </div>
+
+    </div>
+</section>
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-title">
+                    <div>
+                        <div class="kicker">Skills</div>
+                        <h2>Technical stack organized by domain.</h2>
+                    </div>
+                    <p>Each category reflects the areas where I can contribute quickly on entry-level engineering teams.</p>
+                </div>
+                <div class="panel skills-card">
+                    <div class="skills-grid">
+                        <div class="skill-block">
+                            <h3>Embedded Systems</h3>
+                            <div class="tags">
+                                <span class="tag">Arduino</span>
+                                <span class="tag">ESP32</span>
+                            </div>
+                        </div>
+                        
+        
+                        <div class="skill-block">
+                            <h3>AI & Vision</h3>
+                            <div class="tags">
+                                <span class="tag">YOLO</span>
+                                <span class="tag">OpenCV</span>
+                                <span class="tag">Computer Vision</span>
+                            </div>
+                        </div>
+                        <div class="skill-block">
+                            <h3>Software & Backend</h3>
+                            <div class="tags">
+                                <span class="tag">FastAPI</span>
+                               <span class="tag">Flask</span>
+
+                            </div>
+                          </div>
+
+                             <div class="skill-block">
+                            <h3>Database Management</h3>
+                            <div class="tags">
+                                 <span class="tag">MySQL</span>
+                                <span class="tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <div class="container">
+                <div class="section-title">
+                    <div>
+                        <div class="kicker">Projects</div>
+                        <h2>Projects built around safety, automation, and system reliability.</h2>
+                    </div>
+                    <p>These projects show applied experience across edge AI, embedded control, and scalable backend development.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <div class="project-top">
+                            <h3>Transit Shield</h3>
+                            <div class="badge">Edge AI Smart Commute System</div>
+                        </div>
+                        <p>
+                            Built an AI-based safety system for detecting passenger overcrowding and driver fatigue using
+                            computer vision. The goal was to improve commute safety through early warnings and real-time
+                            visibility.
+                        </p>
+                        <p>
+                         Built an AI-based safety system for detecting passenger overcrowding...
+                         </p>
+                        <img src="transit-output.jpeg" alt="Transit Shield" class="project-img">
+                        <div class="project-meta">
+                            <div class="meta-row"><strong>Features</strong><span>Passenger crowd detection, fatigue monitoring, and real-time alerting.</span></div>
+                            <div class="meta-row"><strong>Impact</strong><span>Supports safer public transport decisions by identifying risk conditions as they appear.</span></div>
+                            <div class="meta-row"><strong>Stack</strong><span>YOLO, OpenCV, embedded integration, and alert logic.</span></div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <h3>BreatheLock System</h3>
+                            <div class="badge">Smart Vehicle Safety System</div>
+                        </div>
+                        <p>
+                            Developed a drunk-driving prevention prototype that detects alcohol presence using an MQ-3
+                            sensor and prevents ignition through relay-based engine locking.
+                        </p>
+                        <p>
+                        Developed a drunk-driving prevention prototype...
+                        </p>
+                          <img src="breathe-lock.jpeg" alt="BreatheLock" class="project-img">
+                        <div class="project-meta">
+                            <div class="meta-row"><strong>Features</strong><span>Alcohol detection, buzzer warning, LCD feedback, and engine lock control.</span></div>
+                            <div class="meta-row"><strong>Impact</strong><span>Addresses road safety by preventing vehicle use when impairment is detected.</span></div>
+                            <div class="meta-row"><strong>Stack</strong><span>Embedded C, sensor interfacing, relay module, and LCD output.</span></div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <h3>Climate Fit</h3>
+                            <div class="badge">Smart Hotel Room Automation</div>
+                        </div>
+                        <p>
+                            Designed an IoT-based room automation system with voice-controlled climate adjustment. The
+                            system adapts temperature settings to improve comfort and reduce unnecessary manual control.
+                        </p>
+                        <p>
+                         Designed an IoT-based room automation system...
+                        </p>
+
+                        <img src="climate fit.jpeg" alt="Climate Fit" class="project-img">
+                        <div class="project-meta">
+                            <div class="meta-row"><strong>Features</strong><span>Voice input, temperature adjustment, and personalized climate control.</span></div>
+                            <div class="meta-row"><strong>Impact</strong><span>Improves guest convenience while supporting efficient environment control.</span></div>
+                            <div class="meta-row"><strong>Stack</strong><span>IoT workflow, embedded control, and automation logic.</span></div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-top">
+                            <h3>Task Manager API</h3>
+                            <div class="badge">FastAPI Backend System</div>
+                        </div>
+                        <p>
+                            Created a backend task management API with CRUD operations, authentication, and real-time
+                            updates using WebSockets for dynamic client interaction.
+                        </p>
+                         <img src="Task manager.jpeg" alt="Task manager" class="project-img">
+
+                        <div class="project-meta">
+                            <div class="meta-row"><strong>Features</strong><span>Authentication, CRUD endpoints, and live update support.</span></div>
+                            <div class="meta-row"><strong>Impact</strong><span>Demonstrates backend engineering fundamentals and real-time application design.</span></div>
+                            <div class="meta-row"><strong>Stack</strong><span>FastAPI, Python, WebSockets, and API architecture.</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    <section class="section" id="certifications">
+    <div class="container">
+
+        <div class="section-title">
+            <div>
+                <div class="kicker">Certifications</div>
+                <h2>Professional Training & Courses</h2>
+            </div>
+        </div>
+
+
+
+    <div class="projects-grid">
+
+    <div class="project-card">
+        <img src="java.jpeg" class="project-img">
+        <h3>Java – Greens Technology</h3>
+        <p>Completed training in Java programming and backend fundamentals.</p>
+    </div>
+
+    <div class="project-card">
+        <img src="mysql.jpeg" class="project-img">
+        <h3>MySQL – Greens Technology</h3>
+        <p>Learned database design, queries, and data management.</p>
+    </div>
+
+    <div class="project-card">
+        <img src="python.jpg" class="project-img">
+        <h3>Python Programming – Udemy</h3>
+        <p>Covered core Python concepts, scripting, and problem solving.</p>
+    </div>
+
+    <div class="project-card">
+        <img src="cybersecurity.jpeg" class="project-img">
+        <h3>Cybersecurity Fundamentals – Coursera</h3>
+        <p>Learned basics of security, threats, and protection mechanisms.</p>
+    </div>
+
+</div>
+</div>
+
+    </div>
+</section>
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="section-title">
+                    <div>
+                        <div class="kicker">Contact</div>
+                    </div>
+                    <p>Embedded Systems & AI Developer seeking to build real-world solutions.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="panel contact-card">
+                        <p>
+                            <p>
+                          I am currently seeking entry-level opportunities in Embedded Systems, IoT, and AI.
+                         </p>
+                        </p>
+                        <div class="accent-line" style="margin-bottom: 18px;"></div>
+                        <p style="margin-bottom: 10px; color: var(--text); font-weight: 600;">Email</p>
+                        <p><a href="mailto:dharanikamaraj05@gmail.com">dharanikamaraj05@gmail.com</a></p>
+                    </div>
+
+                    <div class="contact-links">
+                        <a class="panel contact-link" href="https://www.linkedin.com/in/dharani-k-473645257/" target="_blank" rel="noreferrer">
+                            <div>
+                                LinkedIn
+                                <span>Professional profile and career updates</span>
+                            </div>
+                            <div class="badge">Connect</div>
+                        </a>
+                        <a class="panel contact-link" href="https://github.com/kamarajDharani" target="_blank" rel="noreferrer">
+                            <div>
+                                GitHub
+                                <span>Code samples and project repositories</span>
+                            </div>
+                            <div class="badge">View</div>
+                        </a>
+                        <a class="button primary" href="dharani_cv.pdf" download>
+                           Download Resume
+                           </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            Designed for clean presentation, practical engineering, and strong first impressions.
+        </div>
+    </footer>
+</body>
+</html>Fm
